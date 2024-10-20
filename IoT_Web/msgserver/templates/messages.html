@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+        .subtitle {
+            text-align: left;
+            color: #555;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .message-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .order-number {
+            font-weight: bold;
+            color: #fff;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-right: 15px;
+        }
+        .timestamp {
+            font-size: 0.9em;
+            color: #777;
+        }
+        .payload {
+            font-size: 1.1em;
+            color: #333;
+            margin-top: 5px;
+        }
+        .message-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+
+    <script>
+        setTimeout(function(){
+            window.location.reload(1);
+        }, 3000);  // 3000 milliseconds = 3 seconds
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+    <h3>G29: Smart Sign Language Interpreter</h3>
+    <div class="subtitle">Recent Messages</div>
+    <div class="message-list">
+        {% for message in messages %}
+        <div class="message-item">
+            <div class="order-number">{{ forloop.revcounter }}</div>
+            <div>
+                <div class="timestamp">{{ message.timestamp|date:"H:i:s" }}</div>
+                <div class="payload">{{ message.payload }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>
